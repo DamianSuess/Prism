@@ -1,4 +1,4 @@
-﻿using Moq;
+using Moq;
 using Xunit;
 
 namespace Prism.Avalonia.Tests.Regions

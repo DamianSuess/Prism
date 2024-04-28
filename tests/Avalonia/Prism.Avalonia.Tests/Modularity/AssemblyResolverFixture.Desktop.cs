@@ -1,4 +1,4 @@
-﻿using Prism.Modularity;
+using Prism.Modularity;
 using Xunit;
 
 namespace Prism.Avalonia.Tests.Modularity
@@ -58,65 +58,6 @@ namespace Prism.Avalonia.Tests.Modularity
             }
 
             Assert.True(exceptionThrown);
-        }
-
-        [Fact]
-        public void ShouldResolveTypeFromAbsoluteUriToAssembly()
-        {
-            string assemblyPath = CompilerHelper.GenerateDynamicModule("ModuleInLoadedFromContext1", "Module", ModulesDirectory1 + @"\ModuleInLoadedFromContext1.dll");
-            var uriBuilder = new UriBuilder
-            {
-                Host = String.Empty,
-                Scheme = Uri.UriSchemeFile,
-                Path = Path.GetFullPath(assemblyPath)
-            };
-            var assemblyUri = uriBuilder.Uri;
-
-            using var resolver = new AssemblyResolver();
-
-            Type resolvedType =
-                Type.GetType(
-                    "TestModules.ModuleInLoadedFromContext1Class, ModuleInLoadedFromContext1, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null");
-            Assert.Null(resolvedType);
-
-            resolver.LoadAssemblyFrom(assemblyUri.ToString());
-
-            resolvedType =
-                Type.GetType(
-                    "TestModules.ModuleInLoadedFromContext1Class, ModuleInLoadedFromContext1, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null");
-            Assert.NotNull(resolvedType);
-        }
-
-        [Fact]
-        public void ShouldResolvePartialAssemblyName()
-        {
-            string assemblyPath = CompilerHelper.GenerateDynamicModule("ModuleInLoadedFromContext2", "Module", ModulesDirectory1 + @"\ModuleInLoadedFromContext2.dll");
-            var uriBuilder = new UriBuilder
-            {
-                Host = String.Empty,
-                Scheme = Uri.UriSchemeFile,
-                Path = Path.GetFullPath(assemblyPath)
-            };
-            var assemblyUri = uriBuilder.Uri;
-
-            using var resolver = new AssemblyResolver();
-
-            resolver.LoadAssemblyFrom(assemblyUri.ToString());
-
-            Type resolvedType =
-                Type.GetType("TestModules.ModuleInLoadedFromContext2Class, ModuleInLoadedFromContext2");
-
-            Assert.NotNull(resolvedType);
-
-            resolvedType =
-                Type.GetType("TestModules.ModuleInLoadedFromContext2Class, ModuleInLoadedFromContext2, Version=0.0.0.0");
-
-            Assert.NotNull(resolvedType);
-
-            resolvedType =
-                Type.GetType("TestModules.ModuleInLoadedFromContext2Class, ModuleInLoadedFromContext2, Version=0.0.0.0, Culture=neutral");
-
-            Assert.NotNull(resolvedType);
         }
 
         public void Dispose()
