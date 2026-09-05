@@ -19,6 +19,6 @@ public partial class DashboardView : UserControl
 
     // Initialize the WindowNotificationManager with the "TopLevel". Previously (v0.10), MainWindow
     var notifyService = ContainerLocator.Current.Resolve<INotificationService>();
-    notifyService.SetHostWindow(TopLevel.GetTopLevel(this));
+    notifyService.SetHostWindow(TopLevel.GetTopLevel(this)!);
   }
 }
