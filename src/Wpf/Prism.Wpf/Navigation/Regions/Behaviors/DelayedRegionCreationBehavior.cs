@@ -1,9 +1,6 @@
 using System.Collections.ObjectModel;
 using System.Globalization;
 using Prism.Properties;
-#if AVALONIA
-using Avalonia.Threading;
-#endif
 
 namespace Prism.Navigation.Regions.Behaviors
 {
@@ -97,11 +94,7 @@ namespace Prism.Navigation.Regions.Behaviors
                 return;
             }
 
-#if !AVALONIA
             if (targetElement.CheckAccess())
-#else
-            if (Dispatcher.UIThread.CheckAccess())
-#endif
             {
                 Detach();
 
