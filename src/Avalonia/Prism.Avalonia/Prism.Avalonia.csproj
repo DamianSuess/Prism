@@ -52,10 +52,6 @@ Prism.Avalonia helps you more easily design and build rich, flexible, and easy t
   -->
 
   <ItemGroup>
-    <Reference Include="PresentationFramework" />
-  </ItemGroup>
-
-  <ItemGroup>
     <Compile Update="Properties\Resources.Designer.cs">
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
