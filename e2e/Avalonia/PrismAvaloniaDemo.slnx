@@ -5,5 +5,11 @@
     <Project Path="../../src/Prism.Core/Prism.Core.csproj" />
     <Project Path="../../src/Prism.Events/Prism.Events.csproj" />
   </Folder>
+  <Folder Name="/Solution Items/">
+    <File Path="../../.gitignore" />
+    <File Path="../../Directory.Build.props" />
+    <File Path="../../Directory.Build.targets" />
+    <File Path="../../Directory.Packages.props" />
+  </Folder>
   <Project Path="PrismAvaloniaDemo/PrismAvaloniaDemo.csproj" />
 </Solution>

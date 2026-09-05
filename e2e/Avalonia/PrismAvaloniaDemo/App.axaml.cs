@@ -4,6 +4,7 @@ using Prism.Navigation.Regions;
 using SampleApp.Services;
 using SampleApp.ViewModels;
 using SampleApp.Views;
+using static Microsoft.IO.RecyclableMemoryStreamManager;
 
 namespace SampleApp;
 
@@ -15,6 +16,17 @@ public partial class App : PrismApplication
 
         // Required when overriding Initialize
         base.Initialize();
+
+#if DEBUG
+        // Replaces the old this.AttachDevTools();
+        // NOTE: This requires connection to, http://127.0.0.1:29414/ and some IT firewalls may block it.
+        // Reference: https://docs.avaloniaui.net/tools/developer-tools/attaching-to-the-remote-tool
+        this.AttachDeveloperTools();
+        ////{
+        ////    // Change the initialization key gesture (Default is F12)
+        ////    options.Gesture = Avalonia.Input.KeyGesture.Parse("F11");
+        ////});
+#endif
     }
 
     protected override AvaloniaObject CreateShell()
