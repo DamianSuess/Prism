@@ -1,8 +1,3 @@
-using Avalonia;
-using Avalonia.Controls.ApplicationLifetimes;
-using Avalonia.Data.Core;
-using Avalonia.Data.Core.Plugins;
-using Avalonia.Markup.Xaml;
 using Prism.DryIoc;
 using Prism.Ioc;
 using Prism.Navigation.Regions;
@@ -29,13 +24,16 @@ public partial class App : PrismApplication
 
     protected override void RegisterTypes(IContainerRegistry containerRegistry)
     {
-        // Register your Services, Views, Dialogs, etc. here
-
         // Services
         containerRegistry.RegisterSingleton<INotificationService, NotificationService>();
 
+        // Views - Dialogs
+        containerRegistry.RegisterDialog<MessageBoxView, MessageBoxViewModel>();
+        ////containerRegistry.RegisterDialogWindow<CustomDialogWindow>(nameof(CustomDialogWindow));
+
         // Views - Region Navigation
         containerRegistry.RegisterForNavigation<DashboardView, DashboardViewModel>();
+        containerRegistry.RegisterForNavigation<DialogSampleView, DialogSampleViewModel>();
         containerRegistry.RegisterForNavigation<SettingsView, SettingsViewModel>();
         containerRegistry.RegisterForNavigation<SubSettingsView, SubSettingsViewModel>();
     }

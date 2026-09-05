@@ -30,6 +30,11 @@ public class MainWindowViewModel : ViewModelBase
         _regionManager.RequestNavigate(RegionNames.ContentRegion, nameof(DashboardView));
     });
 
+    public DelegateCommand CmdDialogSample => new(() =>
+    {
+        _regionManager.RequestNavigate(RegionNames.ContentRegion, nameof(DialogSampleView));
+    });
+
     public DelegateCommand CmdFlyoutMenu => new(() =>
     {
         IsPaneOpened = !IsPaneOpened;

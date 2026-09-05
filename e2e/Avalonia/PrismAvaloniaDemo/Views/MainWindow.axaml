@@ -7,6 +7,8 @@
         xmlns:vm="clr-namespace:SampleApp.ViewModels"
         x:Class="SampleApp.Views.MainWindow"
         x:DataType="vm:MainWindowViewModel"
+        d:DesignHeight="300"
+        d:DesignWidth="500"
         prism:ViewModelLocator.AutoWireViewModel="True"
         Title="{Binding Title}"
         Width="800"
@@ -94,11 +96,18 @@
                 </StackPanel>
               </Button>
 
+              <Button Command="{Binding CmdDialogSample}" ToolTip.Tip="Dashboard">
+                <StackPanel Orientation="Horizontal">
+                  <PathIcon Data="{StaticResource copy_add_regular}" />
+                  <TextBlock Text="Dialogs" />
+                </StackPanel>
+              </Button>
+
               <!-- Place additional buttons here... -->
               <Button Command="{Binding .}" ToolTip.Tip="Dashboard">
                 <StackPanel Orientation="Horizontal">
                   <PathIcon Data="{StaticResource lock_regular}" />
-                  <TextBlock Text="Something Else" />
+                  <TextBlock Text="Disabled Tab" />
                 </StackPanel>
               </Button>
             </StackPanel>

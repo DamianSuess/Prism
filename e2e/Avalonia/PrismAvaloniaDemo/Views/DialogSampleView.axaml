@@ -1,0 +1,50 @@
+﻿<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:prism="http://prismlibrary.com/"
+             xmlns:vm="clr-namespace:SampleApp.ViewModels"
+             x:Class="SampleApp.DialogSampleView"
+             x:DataType="vm:DialogSampleViewModel"
+             d:DesignHeight="350"
+             d:DesignWidth="500"
+             prism:ViewModelLocator.AutoWireViewModel="True"
+             mc:Ignorable="d">
+  <DockPanel>
+    <StackPanel DockPanel.Dock="Top" Spacing="5">
+      <Grid Background="LightGray" ColumnDefinitions="Auto, *">
+        <!--
+        <Button Content="Back" Command="{Binding CmdNavigateBack}" CornerRadius="10">
+          <PathIcon Data="{StaticResource arrow_reply_regular}" />
+        </Button>
+        -->
+        <TextBlock Text="{Binding Title}"
+                   Grid.Column="1"
+                   Margin="5"
+                   VerticalAlignment="Center"
+                   FontWeight="Bold" />
+      </Grid>
+    </StackPanel>
+
+    <ScrollViewer Margin="5">
+      <Panel>
+        <StackPanel>
+
+          <TextBlock Text="Basic Message Box" FontSize="18" />
+
+          <StackPanel Orientation="Horizontal" Spacing="5">
+            <Button Command="{Binding CmdShowMsgBox}" Content="Show Dialog" />
+            <TextBlock Text="{Binding MsgBoxResult}" VerticalAlignment="Center" />
+            <TextBox Text="{Binding MsgBoxTitle}" PlaceholderText="Title here" />
+            <TextBox Text="{Binding MsgBoxMessage}" PlaceholderText="Message here" />
+          </StackPanel>
+
+          <!--
+          <Button Command="{Binding CmdShowDialog}" Content="Custom Modal Dialog" />
+          <Button Command="{Binding CmdShowRegular}" Content="Non-Modal Dialog (Without Parent)" />
+          -->
+        </StackPanel>
+      </Panel>
+    </ScrollViewer>
+  </DockPanel>
+</UserControl>
